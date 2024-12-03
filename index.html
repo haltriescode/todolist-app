@@ -12,24 +12,23 @@
         <main>
             <!-- Input from user -->
             <div class="box-input">
-                <form>
-                    <input type:"text" id="submit-list" name="submit-list">
-                    <button>Add</button>
+                <form onsubmit="return false;">
+                    <input type="text" id="submit-list" placeholder="Add cool activities">
+                    <button onclick="addActivity()">Add</button>
                 </form>
             </div>
+
             <!-- List of what user going to do-->
             <div class="box-list">
-                <ul>
-                    <li>Doing  Something</li>
-                    <li>Doing  Something</li>
-                    <li>Doing  Something</li>
-                    <li>Doing  Something</li>
-                    <li>Doing  Something</li>
+                <h1>Today Activities</h1>
+                <ul id="list-container">
+                    <!-- <li class="checked">Doing  Something</li> -->
                 </ul>
             </div>
         </main>
         <footer>
 
         </footer>
+        <script src="script.js"></script>
     </body>
 </html>
