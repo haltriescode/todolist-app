@@ -92,7 +92,7 @@ function updateGraph() {
 
     // Add labels
     ctx.font = '12px Arial';
-    ctx.fillStyle = '#666';
+    ctx.fillStyle = 'grey';
     // X-axis labels - reduced the vertical gap
     ctx.fillText('Hard', padding + leftOffset, height - padding + 20);  // Closer to x-axis
     ctx.fillText('Easy', width - padding + leftOffset - 20, height - padding + 20);  // Closer to x-axis
@@ -118,12 +118,12 @@ function updateGraph() {
 
             // Draw point
             ctx.beginPath();
-            ctx.fillStyle = '#007bff';
+            ctx.fillStyle = 'black';
             ctx.arc(x, y, 5, 0, Math.PI * 2);
             ctx.fill();
 
             // Add label
-            ctx.fillStyle = '#000';
+            ctx.fillStyle = 'black';
             ctx.fillText(text, x + 8, y);
         }
     });
@@ -200,7 +200,7 @@ function makeDecision() {
 
     // Generate detailed analysis
     const analysis = `
-        Decision: ${bestOption.text}
+        Prioritize: ${bestOption.text}
         
         Analysis:
         • Impact Score: ${bestOption.impact}/10
