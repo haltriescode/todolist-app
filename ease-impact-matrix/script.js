@@ -22,7 +22,7 @@ window.onload = function() {
                         <input type="range" min="0" max="10" value="${opt.ease}" class="ease-slider">
                     </div>
                 </div>
-                <button class="delete-btn" onclick="deleteOption(this)">×</button>
+                <button class="delete-btn" onclick="deleteOption(this)"></button>
             `;
             document.getElementById('option-list').appendChild(newOption);
         });
@@ -62,7 +62,7 @@ function addOption() {
                 <input type="range" min="0" max="10" value="5" class="ease-slider">
             </div>
         </div>
-        <button class="delete-btn" onclick="deleteOption(this)">×</button>
+        <button class="delete-btn" onclick="deleteOption(this)"></button>
     `;
     optionList.appendChild(newOption);
     updateGraph();
