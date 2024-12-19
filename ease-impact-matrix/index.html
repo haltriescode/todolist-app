@@ -4,45 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ease Impact Matrix</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../src/style.css">
 
 </head>
 <body>
-    <h1>Ease Impact Matrix</h1>
-    <div class="container">
-        <div class="inputs-section">
-            <div id="options-container">
-                <div class="option-list" id="option-list">
-                    <div class="option">
-                        <input type="text" placeholder="Enter option">
-                        <div class="sliders">
-                            <div>
-                                <span class="slider-label">Impact (0-10):</span>
-                                <input type="range" min="0" max="10" value="5" class="impact-slider">
+    <header>
+        <div class="nav-bar">
+            <a href="../todo-list/index.html">Todo List</a>
+            <a href="../ease-impact-matrix/index.html" class="active">Task Prioritization</a>
+        </div>
+        <h1>Ease Impact Matrix</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="inputs-section">
+                <div id="options-container">
+                    <div class="option-list" id="option-list">
+                        <div class="option">
+                            <input type="text" placeholder="Enter option">
+                            <div class="sliders">
+                                <div>
+                                    <span class="slider-label">Impact (0-10):</span>
+                                    <input type="range" min="0" max="10" value="5" class="impact-slider">
+                                </div>
+                                <div>
+                                    <span class="slider-label">Ease (0-10):</span>
+                                    <input type="range" min="0" max="10" value="5" class="ease-slider">
+                                </div>
                             </div>
-                            <div>
-                                <span class="slider-label">Ease (0-10):</span>
-                                <input type="range" min="0" max="10" value="5" class="ease-slider">
-                            </div>
+                            <button class="delete-btn" onclick="deleteOption(this)">×</button>
                         </div>
-                        <button class="delete-btn" onclick="deleteOption(this)">×</button>
                     </div>
+                   
+                    <button class="default-btn" onclick="addOption()">Add Option</button>
+                    <button class="default-btn" onclick="saveOptions()">Save Options</button>
+                    <button class="make-decision-btn" onclick="makeDecision()">Prioritize</button>
+                    <div id="result"></div>
                 </div>
-               
-                <button class="default-btn" onclick="addOption()">Add Option</button>
-                <button class="default-btn" onclick="saveOptions()">Save Options</button>
-                <button class="make-decision-btn" onclick="makeDecision()">Prioritize</button>
-                <div id="result"></div>
+            </div>
+            
+            <div class="canvas-container">
+                <canvas id="graph" width="400" height="400"></canvas>
             </div>
         </div>
-        
-        <div class="canvas-container">
-            <canvas id="graph" width="400" height="400"></canvas>
-        </div>
-    </div>
-    
-    <script src="script.js">
-        
-    </script>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
