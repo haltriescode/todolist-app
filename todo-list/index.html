@@ -13,22 +13,39 @@
             </div>
             <h1>What are your plans for today?</h1>
         </header>
-        <main>
-            <!-- Input from user -->
-            <div class="box box-input">
-                <form onsubmit="return false;">
-                    <input type="text" id="submit-list" placeholder="Add cool activities">
-                    <button onclick="addActivity()">Add</button>
-                </form>
+        <main class="todo-container">
+            <div class="main-content">
+                    <!-- Input from user -->
+                <div class="box box-input">
+                        <form onsubmit="return false;">
+                            <input type="text" id="submit-list" placeholder="Add cool activities">
+                            <button onclick="addActivity()">Add</button>
+                        </form>
+                </div>
+
+                <!-- List of what user going to do-->
+                <div class="box box-list">
+                    <h1>Today Tasks</h1>
+                    <ul id="list-container">
+                        <!-- <li class="checked">Doing  Something</li> -->
+                    </ul>
+                </div>
+
+                <div class="box box-tasklog">
+                    <h1>Finished Tasks</h1>
+                    <ul>
+
+                    </ul>
+                    <button id="clearFinished">Clear</button>
+                </div>
             </div>
 
-            <!-- List of what user going to do-->
-            <div class="box box-list">
-                <h1>Today Activities</h1>
-                <ul id="list-container">
-                    <!-- <li class="checked">Doing  Something</li> -->
-                </ul>
-            </div>
+            <aside class="side-panel">
+                <div class="box box-date">
+                    <h4>Date</h4>
+                    <p id="date-time">Today is ...</p>
+                </div>
+            </aside>
 
         </main>
         <footer>

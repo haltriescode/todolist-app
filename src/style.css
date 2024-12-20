@@ -1,9 +1,11 @@
+/*task-prioritization page*/
 .container {
     display: flex;
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    max-width: 1200px;
 }
 .inputs-section {
     flex: 1;
@@ -102,6 +104,23 @@ h1 {
     background-position: center;
 }
 
+/*todo-list page*/
+.todo-container{
+    display: flex;
+}
+
+.main-content{
+    flex:3;
+}
+
+.side-panel{
+    flex: 1;
+    background: white;
+    padding: 20px;
+    min-width: 250px;
+    height: fit-content;
+}
+
 body{
     text-align: center;
 }
@@ -192,6 +211,8 @@ li.checked::before{
     left: 15px;
 }
 
+
+
 li span{
     position: absolute;
     right: 10px;
@@ -208,4 +229,84 @@ section{
     width: 40px;
     margin-right: 0;
     
+}
+
+.box-date{
+    display:flex;
+    justify-content: flex-end; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width:30%;
+    height:auto;
+    padding: 20px;
+}
+
+.box-tasklog{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width:30%;
+    height:auto;
+    padding: 20px;
+    align-items: center;
+}
+.box-tasklog h1{
+    margin: 0;
+    text-align: center;
+    font-size: 20px;
+}
+.box-list ul {
+    width: 100%;
+    padding: 0;  
+}
+
+.box-tasklog ul li {
+    width:200px;
+    list-style-type: number;
+    text-align: left;
+    padding: 12px 8px;
+    position: relative;
+}
+
+.box-tasklog ul li::before{
+    display: none;
+}
+
+.finished {
+    color: grey;
+    padding: 12px 8px;
+    list-style: none;
+    position: relative;
+}
+
+.box-tasklog ul li span {
+    position: absolute;
+    right: 10px;
+    height: 20px;
+    width: 20px;
+    background-image: url(../src/images/delete.png);
+    background-size: cover;
+    background-position: center;
+}
+
+#clearFinished {
+    width: 100px;
+    padding: 8px 8px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#clearFinished:hover {
+    background: grey;
 }
