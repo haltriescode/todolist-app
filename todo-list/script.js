@@ -21,6 +21,7 @@ function taskComplete(element){
     finishedTask.innerHTML = taskText;
     finishedTask.classList.add('finished');
     finishedTaskList.appendChild(finishedTask);
+    updateClearButton();
 
     saveData();
 }
@@ -34,6 +35,7 @@ function saveData(){
 function loadData(){
     listContainer.innerHTML = localStorage.getItem("activeTasksData") || "";
     finishedTaskList.innerHTML = localStorage.getItem("finishedTasksData") || "";
+    updateClearButton();
 }
 
 document.addEventListener('DOMContentLoaded', loadData);
@@ -63,8 +65,17 @@ const clearFinishedBtn = document.getElementById('clearFinished');
 
 clearFinishedBtn.addEventListener('click', function() {
     finishedTaskList.innerHTML = '';
+    updateClearButton();
     saveData();
 });
+
+function updateClearButton() {
+    const hasFinishedTasks = finishedTaskList.children.length > 0;
+    clearFinishedBtn.disabled = !hasFinishedTasks;
+    clearFinishedBtn.style.opacity = hasFinishedTasks ? '1' : '0.5';
+    clearFinishedBtn.style.cursor = hasFinishedTasks ? 'pointer' : 'not-allowed';
+}
+
 
 function updateStorage() {
 
