@@ -107,10 +107,15 @@ h1 {
 /*todo-list page*/
 .todo-container{
     display: flex;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .main-content{
     flex:3;
+    min-width: 0;
 }
 
 .side-panel{
@@ -133,9 +138,12 @@ body{
 .box-input{
     display:flex;
     margin:auto;
-    width:30%;
+    width: 80%;
     height:auto;
     padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    width: 80%;
     
 }
 form{
@@ -150,9 +158,11 @@ form{
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    width:30%;
+    width: 80%;
     height:auto;
     padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;   
     
 }
 
@@ -243,16 +253,20 @@ section{
     width:30%;
     height:auto;
     padding: 20px;
+    padding-left: 120px;
+    padding-right: 120px;
 }
 
 .box-tasklog{
     display:flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 600px;
+    margin: 20px auto;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    width:30%;
+    width: 80%;
     height:auto;
     padding: 20px;
     align-items: center;
@@ -309,4 +323,135 @@ section{
 
 #clearFinished:hover {
     background: grey;
+}
+
+/* Media Queries */
+@media screen and (max-width: 968px) {
+    /* Todo-list Page*/
+    .todo-container {
+        flex-direction: column;
+    }
+
+    .side-panel {
+        width: 80%;
+        margin: 0 auto;
+        min-width: auto;
+    }
+
+    .box-input, .box-list, .box-tasklog {
+        width: 90%;
+    }
+
+    /* Ease-Impact-Matrix Page*/
+    .container {
+        flex-direction: column;
+    }
+
+    .inputs-section, .canvas-container {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .canvas-container {
+        height: auto;
+        aspect-ratio: 1;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .option {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 15px;
+    }
+
+    .sliders {
+        width: 100%;
+    }
+
+    .default-btn, .make-decision-btn {
+        width: 100%;
+        margin: 10px 0;
+        padding: 12px;
+    }
+
+    #result {
+        margin: 15px 0;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+    /* Todo-list Page*/
+    .nav-bar {
+        padding: 10px;
+    }
+
+    .nav-bar a {
+        display: block;
+        margin: 5px 0;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        padding: 0 10px;
+    }
+
+    .box-input, .box-list, .box-tasklog {
+        width: 95%;
+        padding: 10px;
+    }
+
+    li {
+        padding: 12px 35px 12px 40px;
+        font-size: 16px;
+    }
+
+    .box-tasklog ul li {
+        width: 100%;
+    }
+
+    form {
+        display: flex;
+        gap: 10px;
+    }
+
+    input[type="text"] {
+        flex: 1;
+        min-width: 0;
+    }
+
+    /* Ease-Impact-Matrix Page*/
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .slider-label {
+        font-size: 0.9em;
+    }
+
+    .option input[type="text"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+}
+
+/* Fix button and input responsiveness */
+button, input {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Fix container overflow */
+* {
+    box-sizing: border-box;
+    word-wrap: break-word;
 }
