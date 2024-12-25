@@ -91,7 +91,7 @@ h1 {
 }
 
 .delete-btn {
-    position: absolute;
+    
     right: 0;
     top: 50%;
     transform: translateY(-50%);
@@ -143,8 +143,6 @@ body{
     padding: 20px;
     max-width: 600px;
     margin: 20px auto;
-    width: 80%;
-    
 }
 form{
     margin: auto;
@@ -171,6 +169,17 @@ button {
     color:antiquewhite;
 }
 
+#input-Btn{
+    width: 100px;
+    padding: 8px 8px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
 .box-list h1{
     margin: 0;
     text-align: center;
@@ -182,21 +191,21 @@ button {
 }
 
 li{
-    user-select: none;
-    cursor: pointer;
-    font-size: 17px;
+    display: grid;
+    grid-template-columns: 40px 1fr auto 40px;
+    align-items: center;
+    justify-content: space-between;
     position: relative;
-    list-style: none;
-    padding: 12px 45px 12px 50px;
-    margin-right: 0;
-    text-align: left;
-    width: 100%;
-    box-sizing: border-box;
+    padding: 12px 40px;
+    background: #edeef0;
+    border-radius: 3px;
+    margin-bottom: 8px;
 }
 
 li::before{
     content:'';
-    position: absolute;
+    justify-content: center;
+    grid-column: 1;
     height: 20px;
     width: 20px;
     background-image: url(../src/images/unchecked.png);
@@ -221,20 +230,63 @@ li.checked::before{
     left: 15px;
 }
 
+.priority-tag {
+    width: 120px;
+    text-align: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    color: white;
+    white-space: nowrap;
+    margin: 0 10px;
+}
 
+.high-priority { background: #ff4444; color: white; }
+.strategic { background: #ffaa44; color: white; }
+.quick-win { background: #44ff44; color: black; }
+.low-priority { background: #aaaaaa; color: white; }
+.medium-priority { background: #44aaff; color: white; }
+
+.priority-inputs {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.task-text {
+    grid-column: 2;
+    text-align: left;
+    padding-left: 30px;
+    width: 100%;
+}
 
 li span{
-    position: absolute;
+    grid-column: 3;
     right: 10px;
+    height: 20px;
+    width: 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+.delete-btn {
+    grid-column: 4;
+    justify-self: center;
     height: 20px;
     width: 20px;
     background-image: url(../src/images/delete.png);
     background-size: cover;
     background-position: center;
+    cursor: pointer;
+}
+    
+li span:not(.task-text):not(.priority-tag):not(.delete-btn) {
+    display: none;
 }
 
 section{
-    position:absolute;
+    grid-column: 4;
+    justify-self: center;
     height: 40px;
     width: 40px;
     margin-right: 0;
@@ -281,36 +333,37 @@ section{
     padding: 0;  
 }
 
+.box-tasklog ul {
+    counter-reset: finished-counter;
+    padding-left: 40px;
+    list-style: none;
+}
+
 .box-tasklog ul li {
-    width:200px;
-    list-style-type: number;
+    width: 100%;
     text-align: left;
-    padding: 12px 8px;
-    position: relative;
+    padding: 12px 15px;
+    display: flex;
+    gap: 10px;
+    background: #f5f5f5;
+    counter-increment: finished-counter;
 }
 
 .box-tasklog ul li::before{
-    display: none;
-}
-
-.finished {
-    color: grey;
-    padding: 12px 8px;
-    list-style: none;
-    position: relative;
-}
-
-.box-tasklog ul li span {
+    background-image: none;
+    content: counter(finished-counter) ".";
     position: absolute;
-    right: 10px;
-    height: 20px;
-    width: 20px;
-    background-image: url(../src/images/delete.png);
-    background-size: cover;
-    background-position: center;
+    left: -25px;
+    color: #666;
+    display: block;
 }
 
-#clearFinished {
+.finished{
+    list-style-type: decimal;
+    color: grey;
+}
+
+#clearFinished-Btn {
     width: 100px;
     padding: 8px 8px;
     background: black;
@@ -321,7 +374,7 @@ section{
     margin-bottom: 10px;
 }
 
-#clearFinished:hover {
+#clearFinished-Btn:hover {
     background: grey;
 }
 
@@ -340,6 +393,7 @@ section{
 
     .box-input, .box-list, .box-tasklog {
         width: 90%;
+        
     }
 
     /* Ease-Impact-Matrix Page*/
@@ -403,6 +457,22 @@ section{
     .box-input, .box-list, .box-tasklog {
         width: 95%;
         padding: 10px;
+       
+    }
+
+    .box-input form {
+        display: flex;
+        flex-direction: column;
+        lign-items: stretch;
+        width: 100%;
+        gap: 15px;
+    }
+
+    #input-Btn {
+        width: 100%;
+        max-width: 200px;
+        margin: 10px auto;
+        display: block;
     }
 
     li {
@@ -414,9 +484,12 @@ section{
         width: 100%;
     }
 
-    form {
+    .box-input form {
         display: flex;
-        gap: 10px;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 15px;
     }
 
     input[type="text"] {

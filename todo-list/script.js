@@ -1,28 +1,47 @@
+import { calculatePriority } from '../src/utils/prioritization.js';
+
 const inputBox = document.getElementById("submit-list");
 const listContainer = document.getElementById("list-container");
 const finishedTaskList = document.querySelector('.box-tasklog ul');
 
-function addActivity(){
+window.addActivity = function(){
     if(inputBox.value === ''){
         alert("Please write something");
     } else {
+        const impact = parseInt(document.getElementById('impact').value);
+        const ease = parseInt(document.getElementById('ease').value);
+        const priority = calculatePriority(impact, ease);
+
         let li = document.createElement("li");
-        li.innerHTML = `${inputBox.value}<span></span>`; 
+        li.innerHTML = `
+            <span class="task-text">${inputBox.value}</span>
+            <span class="priority-tag ${priority.label.toLowerCase().replace(' ', '-')}" style="background-color: ${priority.color}">
+                ${priority.label}
+            </span>
+            <span class="delete-btn"></span>
+        `; 
         listContainer.appendChild(li);
+        inputBox.value = "";
+        saveData();
     }
-    inputBox.value = "";
-    saveData();
 };
 
 function taskComplete(element){
-    const taskText = element.textContent;
-    element.parentElement.removeChild(element);
+    const taskText = element.querySelector('.task-text').textContent;
+    const priorityTag = element.querySelector('.priority-tag').outerHTML;
+
+    element.remove();
+
     const finishedTask = document.createElement('li');
-    finishedTask.innerHTML = taskText;
+    finishedTask.innerHTML =`
+       <span class="task-text">${taskText}</span>
+        ${priorityTag}
+    `;
+
     finishedTask.classList.add('finished');
     finishedTaskList.appendChild(finishedTask);
-    updateClearButton();
 
+    updateClearButton();
     saveData();
 }
 
@@ -49,19 +68,22 @@ listContainer.addEventListener('click', function(e){
         }
 });
 
-listContainer.addEventListener("click", function(e){
-    if(e.target.tagName === "LI"){
-        if(!e.target.classList.contains('checked')){
-            e.target.classList.add('checked');
-            taskComplete(e.target);
+listContainer.addEventListener("click", function(e) {
+    const li = e.target.closest('li');
+    if (!li) return;
+    
+    if (e.target.classList.contains('delete-btn')) {
+        li.remove();
+        saveData();
+    } else {
+        if (!li.classList.contains('checked')) {
+            li.classList.add('checked');
+            taskComplete(li);
         }
-    } else if(e.target.tagName === "SPAN"){
-        e.target.parentElement.remove();
-        updateStorage();
     }
 });
 
-const clearFinishedBtn = document.getElementById('clearFinished');
+const clearFinishedBtn = document.getElementById('clearFinished-Btn');
 
 clearFinishedBtn.addEventListener('click', function() {
     finishedTaskList.innerHTML = '';

@@ -19,7 +19,11 @@
                 <div class="box box-input">
                         <form onsubmit="return false;">
                             <input type="text" id="submit-list" placeholder="Add cool activities">
-                            <button onclick="addActivity()">Add</button>
+                            <div class="priority-inputs">
+                                <label>Impact (1-10): <input type="range" id="impact" min="0" max="10" value="5"></label>
+                                <label>Ease (1-10): <input type="range" id="ease" min="0" max="10" value="5"></label>
+                            </div>
+                            <button id="input-Btn" onclick="addActivity()">Add</button>
                         </form>
                 </div>
 
@@ -36,7 +40,7 @@
                     <ul>
 
                     </ul>
-                    <button id="clearFinished">Clear</button>
+                    <button id="clearFinished-Btn">Clear</button>
                 </div>
             </div>
 
@@ -51,6 +55,6 @@
         <footer>
 
         </footer>
-        <script src="script.js"></script>
+        <script type="module" src="script.js"></script>
     </body>
 </html>
